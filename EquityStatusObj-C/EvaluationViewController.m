@@ -7,11 +7,12 @@
 //
 
 #import "EvaluationViewController.h"
+#import "DataStore.h"
 
 @interface EvaluationViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (strong,nonatomic) UITableView *evalTableView;
-@property (strong,nonatomic) NSArray     *content;
+@property (strong, nonatomic) DataStore *datastore;
 
 @end
 
@@ -19,13 +20,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.content = @[ @"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday"];
+    self.datastore = [DataStore sharedManager];
+    
+    [self.datastore.content addObject:@"Monday"];
+    [self.datastore.content addObject:@"Tuesday"];
+    [self.datastore.content addObject:@"Wednesday"];
+    [self.datastore.content addObject:@"Thursday"];
+    [self.datastore.content addObject:@"Friday"];
+    [self.datastore.content addObject:@"Saturday"];
+    [self.datastore.content addObject:@"Sunday"];
                       
     self.evalTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.evalTableView.delegate = self;
     self.evalTableView.dataSource = self;
     [self.view addSubview:self.evalTableView];
     [self.evalTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellIdentifier"];
+    
+    [self pageLayout];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +48,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.content count];
+    return [self.datastore.content count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -49,9 +60,63 @@
     }
     
     //FISLocation *location = (FISLocation *)self.locations[indexPath.row];
-    cell.textLabel.text = self.content[indexPath.row];
+    cell.textLabel.text = self.datastore.content[indexPath.row];
     
     return cell;
+}
+
+- (void) pageLayout {
+    // tableview
+    self.evalTableView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    //leading
+    NSLayoutConstraint *leading = [NSLayoutConstraint
+                                   constraintWithItem: self.evalTableView
+                                   attribute: NSLayoutAttributeLeading
+                                   relatedBy: NSLayoutRelationEqual
+                                   
+                                   toItem: self.view
+                                   attribute: NSLayoutAttributeLeading
+                                   multiplier: 1.0f
+                                   constant: 10.f];
+    
+    // trailing
+    NSLayoutConstraint *trailing = [NSLayoutConstraint
+                                    constraintWithItem: self.evalTableView
+                                    attribute: NSLayoutAttributeTrailing
+                                    relatedBy: NSLayoutRelationEqual
+                                    
+                                    toItem: self.view
+                                    attribute: NSLayoutAttributeTrailing
+                                    multiplier: 1.0f
+                                    constant: -10.f];
+    
+    //top
+    NSLayoutConstraint *top =[NSLayoutConstraint
+                              constraintWithItem: self.evalTableView
+                              attribute: NSLayoutAttributeTop
+                              relatedBy: NSLayoutRelationEqual
+                              
+                              toItem: self.view
+                              attribute: NSLayoutAttributeTop
+                              multiplier: 1.0f
+                              constant: 100.f];
+    
+    //bottom
+    NSLayoutConstraint *bottom =[NSLayoutConstraint
+                                 constraintWithItem: self.evalTableView
+                                 attribute: NSLayoutAttributeBottom
+                                 relatedBy: NSLayoutRelationEqual
+                                 
+                                 toItem: self.view
+                                 attribute: NSLayoutAttributeBottom
+                                 multiplier: 1.0f
+                                 constant: 0.f];
+    
+    [self.view addConstraint:leading];
+    [self.view addConstraint:trailing];
+    [self.view addConstraint:top];
+    [self.view addConstraint:bottom];
 }
 
 /*

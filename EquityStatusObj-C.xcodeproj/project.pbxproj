@@ -14,6 +14,7 @@
 		C0A232B51E671AB700FB1617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0A232B41E671AB700FB1617 /* Assets.xcassets */; };
 		C0A232B81E671AB700FB1617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A232B61E671AB700FB1617 /* LaunchScreen.storyboard */; };
 		C0A232C31E671AB700FB1617 /* EquityStatusObj_CTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A232C21E671AB700FB1617 /* EquityStatusObj_CTests.m */; };
+		C0B48BF11EB7AB6200EF4FA1 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B48BF01EB7AB6200EF4FA1 /* DataStore.m */; };
 		C0FDFAD91EB78DE300AF5FFC /* EvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FDFAD81EB78DE300AF5FFC /* EvaluationViewController.m */; };
 		C0FDFADC1EB78F1B00AF5FFC /* TabsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FDFADB1EB78F1B00AF5FFC /* TabsViewController.m */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,8 @@
 		C0A232BE1E671AB700FB1617 /* EquityStatusObj-CTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EquityStatusObj-CTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A232C21E671AB700FB1617 /* EquityStatusObj_CTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EquityStatusObj_CTests.m; sourceTree = "<group>"; };
 		C0A232C41E671AB700FB1617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0B48BEF1EB7AB6200EF4FA1 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
+		C0B48BF01EB7AB6200EF4FA1 /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
 		C0FDFAD71EB78DE300AF5FFC /* EvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationViewController.h; sourceTree = "<group>"; };
 		C0FDFAD81EB78DE300AF5FFC /* EvaluationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluationViewController.m; sourceTree = "<group>"; };
 		C0FDFADA1EB78F1B00AF5FFC /* TabsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabsViewController.h; sourceTree = "<group>"; };
@@ -86,6 +89,8 @@
 		C0A232A41E671AB700FB1617 /* EquityStatusObj-C */ = {
 			isa = PBXGroup;
 			children = (
+				C0B48BEF1EB7AB6200EF4FA1 /* DataStore.h */,
+				C0B48BF01EB7AB6200EF4FA1 /* DataStore.m */,
 				C0A232A81E671AB700FB1617 /* AppDelegate.h */,
 				C0A232A91E671AB700FB1617 /* AppDelegate.m */,
 				C0A232AE1E671AB700FB1617 /* Main.storyboard */,
@@ -228,6 +233,7 @@
 				C0A232B31E671AB700FB1617 /* EquityStatusObj_C.xcdatamodeld in Sources */,
 				C0A232AA1E671AB700FB1617 /* AppDelegate.m in Sources */,
 				C0A232A71E671AB700FB1617 /* main.m in Sources */,
+				C0B48BF11EB7AB6200EF4FA1 /* DataStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
