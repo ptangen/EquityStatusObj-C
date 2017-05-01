@@ -8,6 +8,7 @@
 
 #import "EvaluationViewController.h"
 #import "DataStore.h"
+#import "APIClient.h"
 
 @interface EvaluationViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -21,14 +22,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.datastore = [DataStore sharedManager];
+
+    NSDictionary *testDict;
     
-    [self.datastore.content addObject:@"Monday"];
-    [self.datastore.content addObject:@"Tuesday"];
-    [self.datastore.content addObject:@"Wednesday"];
-    [self.datastore.content addObject:@"Thursday"];
-    [self.datastore.content addObject:@"Friday"];
-    [self.datastore.content addObject:@"Saturday"];
-    [self.datastore.content addObject:@"Sunday"];
+    [APIClient fetchEvalData:testDict completion:^(NSString *results) {
+        if(![results isEqual: @"OK"]) {
+            NSLog(@"Error fetching eval companies. Message = %@", results);  // TODO: Put error message in alert
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.evalTableView reloadData]; // put reload on the main queue
+            });
+        }
+    }];
                       
     self.evalTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.evalTableView.delegate = self;
